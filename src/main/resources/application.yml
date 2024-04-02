@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sayaxat_db
+    username: postgres
+    password: bekzod
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+#    host: localhost Buni Ko'dni o'zida configuratsiya qilib yubordim
+#    port: 1025
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
