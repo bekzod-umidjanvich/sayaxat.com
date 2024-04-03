@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/sayaxat_db
+    url: jdbc:postgresql://localhost:5432/project_db
     username: postgres
     password: bekzod
     driver-class-name: org.postgresql.Driver

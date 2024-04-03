@@ -1,4 +1,4 @@
-package com.sayaxat.appUser;
+package com.confirmEmailToken.appUser;
 
 
 public enum AppUserRole {

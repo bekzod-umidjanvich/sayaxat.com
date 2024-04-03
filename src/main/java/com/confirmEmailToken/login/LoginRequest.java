@@ -1,4 +1,4 @@
-package com.sayaxat.registration;
+package com.confirmEmailToken.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,8 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @RequiredArgsConstructor
-public class RegisterRequest {
+public class LoginRequest {
 
-    private String firstName;
-    private String lastName;
     private String email;
     private String password;
 

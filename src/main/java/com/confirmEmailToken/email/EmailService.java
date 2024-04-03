@@ -1,4 +1,4 @@
-package com.sayaxat.email;//package com.sayaxat.security.email;
+package com.confirmEmailToken.email;
 
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;

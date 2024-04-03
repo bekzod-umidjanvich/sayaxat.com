@@ -1,6 +1,6 @@
-package com.sayaxat.registration.token;
+package com.confirmEmailToken.registration.token;
 
-import com.sayaxat.appUser.AppUser;
+import com.confirmEmailToken.appUser.AppUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

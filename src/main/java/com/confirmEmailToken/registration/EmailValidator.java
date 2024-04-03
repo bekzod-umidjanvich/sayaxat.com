@@ -1,4 +1,4 @@
-package com.sayaxat.registration;
+package com.confirmEmailToken.registration;
 
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ public class EmailValidator implements Predicate<String> {
     @Override
     public boolean test(String s) {
 //      TODO: Regex to validate email
-
-        return true;
+        final String regex = "^(.+)@(.+)$";
+        return s.matches(regex);
     }
 }

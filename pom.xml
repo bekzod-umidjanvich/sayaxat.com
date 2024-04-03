@@ -8,11 +8,11 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sayaxat</groupId>
-	<artifactId>sayaxat.com</artifactId>
+	<groupId>ConfirmEmail.com</groupId>
+	<artifactId>RegisterAndLoginSenEmailConfirmToken</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sayaxat.com</name>
-	<description>WebApp for Sayaxat.com</description>
+	<name>confirmEmailToken.com</name>
+	<description>WebApp for ConfirmEmailToken</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

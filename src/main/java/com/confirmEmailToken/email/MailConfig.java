@@ -1,4 +1,4 @@
-package com.sayaxat.email;
+package com.confirmEmailToken.email;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

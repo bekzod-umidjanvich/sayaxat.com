@@ -1,8 +1,8 @@
-package com.sayaxat.appUser;
+package com.confirmEmailToken.appUser;
 
-import com.sayaxat.login.LoginRequest;
-import com.sayaxat.registration.token.ConfirmationToken;
-import com.sayaxat.registration.token.ConfirmationTokenService;
+import com.confirmEmailToken.login.LoginRequest;
+import com.confirmEmailToken.registration.token.ConfirmationToken;
+import com.confirmEmailToken.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,11 +34,12 @@ public class AppUserService implements UserDetailsService {
     }
 
     public String signUpUser(AppUser appUser) {
-        boolean userExists = appUserRepository
-                .findAppUserByEmail(appUser.getEmail())
-                .isPresent();
 
-        if (userExists) {
+        //TODO: Validate Email
+        if (appUserRepository
+                .findAppUserByEmail(appUser.getEmail())
+                .isPresent()
+        ) {
             throw new IllegalStateException("email already taken");
         }
 
@@ -47,10 +48,13 @@ public class AppUserService implements UserDetailsService {
 
         appUser.setPassword(encodedPassword);
 
+        //TODO: Save User to the database
         appUserRepository.save(appUser);
 
+        //TODO: Create token
         String token = UUID.randomUUID().toString();
 
+        //TODO: Save token to the database which is related to the user
         confirmationTokenService.saveConfirmationToken(new ConfirmationToken(
                 token,
                 java.time.LocalDateTime.now(),
@@ -58,16 +62,22 @@ public class AppUserService implements UserDetailsService {
                 appUser
         ));
 
-        //TODO: Send email
-
+        //TODO: Confirm token is Created and return token
         return token;
     }
 
-    //Login method
+    //TODO: Login
     public void login(LoginRequest request) {
-        appUserRepository.findAppUserByEmail(request.getEmail())
-                .orElseThrow(() -> new IllegalStateException("User not found"));
-        System.err.println("Kirdi login method");
+
+        //check if email and password are correct
+        AppUser appUser = appUserRepository.findAppUserByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalStateException("email not found"));
+
+        if (!BCrypt.checkpw(request.getPassword(), appUser.getPassword())) {
+            throw new IllegalStateException("password incorrect");
+        }
+
+
     }
 
 

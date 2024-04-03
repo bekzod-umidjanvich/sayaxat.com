@@ -1,11 +1,11 @@
-package com.sayaxat.registration;
+package com.confirmEmailToken.registration;
 
-import com.sayaxat.appUser.AppUserRole;
-import com.sayaxat.appUser.AppUser;
-import com.sayaxat.email.EmailSender;
-import com.sayaxat.registration.token.ConfirmationToken;
-import com.sayaxat.registration.token.ConfirmationTokenService;
-import com.sayaxat.appUser.AppUserService;
+import com.confirmEmailToken.appUser.AppUser;
+import com.confirmEmailToken.appUser.AppUserRole;
+import com.confirmEmailToken.appUser.AppUserService;
+import com.confirmEmailToken.email.EmailSender;
+import com.confirmEmailToken.registration.token.ConfirmationToken;
+import com.confirmEmailToken.registration.token.ConfirmationTokenService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,23 +23,27 @@ public class RegistrationService {
 
     public String register(RegisterRequest request) {
 
-        boolean isValidEmail = emailValidator.
-                test(request.getEmail());
-        if (!isValidEmail) {
-            throw new IllegalStateException("Email not valid");
+        //TODO: Validate email(Regex)
+        if (!emailValidator.
+                test(request.getEmail())) {
+            throw new IllegalStateException("email not valid");
         }
 
         String token = appUserService.signUpUser(
                 new AppUser(
-                        request.getFirstName(),
-                        request.getLastName(),
                         request.getEmail(),
                         request.getPassword(),
                         AppUserRole.USER
                 ));
 
+        //TODO: Send confirmation token with email
         String link = "http://localhost:8080/api/v1/register/confirm?token=" + token;
-        emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
+        emailSender.send(request.getEmail(), buildEmail(request.getEmail(), link));
+
+        //TODO: Activete xabar yuborildi emailga ochib
+        // activate qilishni so'rayman
+        // (html saxifa) yuborish kerak y'ani activate bo'lgandan keyin
+        // saxifani qayta yuklash kerak degan message ham bo'ladi
 
         return token;
     }

@@ -1,4 +1,4 @@
-package com.sayaxat.registration.token;
+package com.confirmEmailToken.registration.token;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

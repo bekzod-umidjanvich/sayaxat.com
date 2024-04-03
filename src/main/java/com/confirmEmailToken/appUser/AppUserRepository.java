@@ -1,6 +1,5 @@
-package com.sayaxat.appUser;
+package com.confirmEmailToken.appUser;
 
-import com.sayaxat.appUser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

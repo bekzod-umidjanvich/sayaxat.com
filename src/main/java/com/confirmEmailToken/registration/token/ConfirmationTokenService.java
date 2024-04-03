@@ -1,4 +1,4 @@
-package com.sayaxat.registration.token;
+package com.confirmEmailToken.registration.token;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.sayaxat.appUser;
+package com.confirmEmailToken.appUser;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,21 +30,17 @@ public class AppUser implements UserDetails {
     )
     private Long id;
     @NonNull
-    private String firstName;
-    @NonNull
-    private String lastName;
-    @NonNull
     private String email;
     @NonNull
     private String password;
+
     @Enumerated(EnumType.STRING)
     private AppUserRole userRole;
+
     private boolean locked = false;
     private boolean enabled = false;
 
-    public AppUser(String firstName, String lastName, String email, String password, AppUserRole userRole) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public AppUser(@NonNull String email, @NonNull String password, AppUserRole userRole) {
         this.email = email;
         this.password = password;
         this.userRole = userRole;

@@ -1,4 +1,4 @@
-package com.sayaxat.registration;
+package com.confirmEmailToken.registration;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +11,7 @@ public class RegistrationController {
     public RegistrationController(RegistrationService registrationService) {
         this.registrationService = registrationService;
     }
+
 
     @PostMapping
     public String register(@RequestBody RegisterRequest request) {
